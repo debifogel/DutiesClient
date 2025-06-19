@@ -1,0 +1,58 @@
+<div class="home-container">
+    <div class="hero-section">
+      <h1>מערכת ניהול תורנויות</h1>
+      
+      @if (isLoading) {
+        <div class="loading">טוען נתונים...</div>
+      } @else {
+        <div class="next-friday-card">
+          <h2>תורנות יום שישי הקרוב</h2>
+          <div class="date-display">
+            {{ nextFridayDate | date:'dd/MM/yyyy' }}
+          </div>
+          
+          @if (nextFridayToran) {
+            <div class="toran-info success">
+              <div class="toran-name">{{ nextFridayToran }}</div>
+              <div class="update-section">
+                <label>
+                  <input 
+                    type="checkbox" 
+                    [(ngModel)]="isCompleted"
+                    (change)="updateToranStatus()"
+                  />
+                  התורנות בוצעה
+                </label>
+                @if (isCompleted) {
+                  <div class="completed-message">✅ התורנות עודכנה כמבוצעת</div>
+                }
+              </div>
+            </div>
+          } @else {
+            <div class="no-toran warning">
+              <div class="message">ביום שישי הזה אין תורנויות</div>
+            </div>
+          }
+        </div>
+      }
+
+      @if (errorMessage) {
+        <div class="error-message">
+          {{ errorMessage }}
+        </div>
+      }
+    </div>
+
+    <div class="quick-actions">
+      <h3>פעולות מהירות</h3>
+      <div class="action-buttons">
+        <button routerLink="/toranim" class="action-btn primary">
+          ניהול תורנים
+        </button>
+        <button routerLink="/schedule" class="action-btn secondary">
+          צפייה בלוח התורנויות
+        </button>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
