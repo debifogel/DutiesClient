@@ -8,10 +8,10 @@
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         בית
       </a>
-      <a routerLink="/employees" routerLinkActive="active">
+      <a routerLink="/toranim" routerLinkActive="active">
         תורנים
       </a>
-      <a routerLink="/duties" routerLinkActive="active">
+      <a routerLink="/schedule" routerLinkActive="active">
         תורניות
       </a>
     </div>
@@ -20,5 +20,8 @@
   <main class="main-content">
     <router-outlet></router-outlet>
   </main>
-</div>
-`
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2024 מערכת ניהול תורנויות. כל הזכויות שמורות.</p>
+    </div>
+  </footer>

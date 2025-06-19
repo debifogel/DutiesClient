@@ -28,7 +28,11 @@
       border-radius: 12px;
       margin-top: 20px;
     }
-
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
     .date-display {
       font-size: 1.5rem;
       font-weight: bold;

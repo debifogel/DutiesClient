@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 import { ToranWeeklyService, DateService } from '../../Services/toran-weekly.service';
-import { RouterOutlet } from '@angular/router';
+import { ToranService } from '../../Services/toran.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule,RouterOutlet],
+  imports: [CommonModule, FormsModule,],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
@@ -19,10 +19,17 @@ export class HomeComponent implements OnInit {
   isCompleted: boolean = false;
   isLoading: boolean = true;
   errorMessage: string = '';
+  isModalOpen: boolean = false;
+  searchQuery: string = '';
+  employees: any[] = [];
+  filteredEmployees: any[] = [];
+  selectedEmployee: any = null;
+  selectionMessage: string = '';
 
   constructor(
     private toranWeeklyService: ToranWeeklyService,
-    private dateService: DateService
+    private dateService: DateService,
+    private toranService: ToranService
   ) {}
 
   ngOnInit() {
@@ -66,5 +73,38 @@ export class HomeComponent implements OnInit {
     };
 
     // this.toranStatusService.create(statusUpdate).subscribe({...});
+  }
+
+  openEmployeeModal() {
+    this.isModalOpen = true;
+    this.toranService.getAll().subscribe({
+      next: (result) => {
+        this.employees = result;
+        this.filteredEmployees = result;
+      },
+      error: (error) => {
+        console.error('Error fetching employees:', error);
+      }
+    });
+  }
+
+  filterEmployees() {
+    const query = this.searchQuery.toLowerCase();
+    this.filteredEmployees = this.employees.filter(employee =>
+      employee.name.toLowerCase().includes(query)
+    );
+  }
+
+  selectEmployee(employee: any) {
+    this.selectedEmployee = employee;
+  }
+
+  confirmSelection() {
+    if (this.selectedEmployee) {
+      this.selectionMessage = `✅ העובד ${this.selectedEmployee.name} נבחר לתורנות`;
+      this.isModalOpen = false;
+    } else {
+      this.selectionMessage = '❌ יש לבחור עובד לפני אישור';
+    }
   }
 }

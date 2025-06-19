@@ -1,4 +1,4 @@
-    <div class="schedule-container">
+     <div class="schedule-container">
       <div class="header">
         <h1>לוח התורנויות</h1>
       </div>
@@ -112,21 +112,13 @@
       }
 
       <!-- סטטיסטיקות -->
-      @if (scheduleItems.length > 0) {
+      @if (scheduleItems.length >= 0) {
         <div class="statistics">
-          <h3>סטטיסטיקות</h3>
+          <h3>מידע</h3>
           <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-number">{{ scheduleItems.length }}</div>
-              <div class="stat-label">סה"כ תורנויות</div>
-            </div>
             <div class="stat-item">
               <div class="stat-number">{{ getCompletedCount() }}</div>
               <div class="stat-label">תורנויות שבוצעו</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">{{ getPendingCount() }}</div>
-              <div class="stat-label">תורנויות ממתינות</div>
             </div>
             <div class="stat-item">
               <div class="stat-number">{{ uniqueToranNames.length }}</div>
@@ -136,4 +128,3 @@
         </div>
       }
     </div>
-  

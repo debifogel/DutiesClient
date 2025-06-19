@@ -38,7 +38,6 @@ export class ToranimComponent implements OnInit {
       id: 0,
       name: '',
       email: '',
-      isActive: true
     };
   }
 

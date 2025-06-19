@@ -3,7 +3,6 @@ export interface ToranModel {
   id: number;
   name: string;
   email?: string;
-  isActive: boolean;
   createdDate?: Date;
 }
 

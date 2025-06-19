@@ -10,29 +10,42 @@
           <div class="date-display">
             {{ nextFridayDate | date:'dd/MM/yyyy' }}
           </div>
-          
-          @if (nextFridayToran) {
-            <div class="toran-info success">
-              <div class="toran-name">{{ nextFridayToran }}</div>
-              <div class="update-section">
-                <label>
-                  <input 
-                    type="checkbox" 
-                    [(ngModel)]="isCompleted"
-                    (change)="updateToranStatus()"
-                  />
-                  התורנות בוצעה
-                </label>
-                @if (isCompleted) {
-                  <div class="completed-message">✅ התורנות עודכנה כמבוצעת</div>
-                }
-              </div>
+
+          <div class="toran-selection">
+            <button (click)="openEmployeeModal()" class="action-btn primary">
+              אשר ביצוע התורנות
+            </button>
+          </div>
+
+          @if(isModalOpen){<div  class="employee-modal">
+            <div class="modal-content" >
+              <h3> בחר עובד</h3>
+              <input 
+                type="text" 
+                [(ngModel)]="searchQuery" 
+                (input)="filterEmployees()" 
+              />
+              <ul class="employee-list">
+              @for ( employee of filteredEmployees;track employee) {              
+                <li 
+                  
+                  (click)="selectEmployee(employee)"
+                  [class.selected]="employee === selectedEmployee"
+                >
+                  {{ employee.name }}
+                </li>}
+              </ul>
+              <button (click)="confirmSelection()" class="action-btn success">
+                אישור
+              </button>
             </div>
-          } @else {
-            <div class="no-toran warning">
-              <div class="message">ביום שישי הזה אין תורנויות</div>
-            </div>
-          }
+          </div>
+        
+
+         @if(selectionMessage){} <div  class="success-message">
+            {{ selectionMessage }}
+          </div>
+        }
         </div>
       }
 
@@ -54,5 +67,4 @@
         </button>
       </div>
     </div>
-    <router-outlet></router-outlet>
   </div>

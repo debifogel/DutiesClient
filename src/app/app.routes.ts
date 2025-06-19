@@ -7,7 +7,7 @@ import { ScheduleComponent } from '../components/schedule/schedule.component';
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'employees', component: ToranimComponent },
-  { path: 'duties', component: ScheduleComponent },
+  { path: 'toranim', component: ToranimComponent },
+  { path: 'schedule', component: ScheduleComponent },
   { path: '**', redirectTo: '/home' }
 ];

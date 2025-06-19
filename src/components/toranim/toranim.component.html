@@ -50,16 +50,7 @@
                 }
               </div>
 
-              <div class="form-group">
-                <label>
-                  <input
-                    type="checkbox"
-                    [(ngModel)]="currentToran.isActive"
-                    name="isActive"
-                  />
-                  תורן פעיל
-                </label>
-              </div>
+              
 
               <div class="form-actions">
                 <button 
@@ -97,12 +88,9 @@
 
           <div class="toranim-grid">
             @for (toran of filteredToranim; track toran.id) {
-              <div class="toran-card" [class.inactive]="!toran.isActive">
+              
                 <div class="toran-header">
                   <h3>{{ toran.name }}</h3>
-                  <div class="status-badge" [class.active]="toran.isActive">
-                    {{ toran.isActive ? 'פעיל' : 'לא פעיל' }}
-                  </div>
                 </div>
                 
                 @if (toran.email) {
@@ -126,12 +114,10 @@
                   <button 
                     class="delete-btn" 
                     (click)="confirmDelete(toran)"
-                    [disabled]="toran.isActive"
                   >
                     🗑️ מחיקה
                   </button>
                 </div>
-              </div>
             }
           </div>
         }
