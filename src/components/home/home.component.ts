@@ -1,15 +1,16 @@
 // components/home/home.component.ts
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 import { ToranWeeklyService, DateService } from '../../Services/toran-weekly.service';
 import { ToranService } from '../../Services/toran.service';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule,],
+  imports: [ FormsModule, RouterOutlet,DatePipe,RouterLink],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })

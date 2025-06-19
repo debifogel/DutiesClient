@@ -14,10 +14,15 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.nav-brand h1 {
+.nav-brand a {
   margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
 .nav-links {
@@ -25,22 +30,13 @@
   gap: 2rem;
 }
 
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-  font-weight: 500;
-}
 
-.nav-links a:hover {
+
+.nav-brand a:hover {
   background-color: rgba(255,255,255,0.1);
 }
 
-.nav-links a.active {
-  background-color: #3498db;
-}
+
 
 .main-content {
   padding: 2rem;
