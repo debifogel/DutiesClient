@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ToranWeeklyService {
-  private readonly baseUrl = 'https://your-api-url/api/ToranWeekly';
+  private readonly baseUrl = 'https://toran-management.onrender.com/api/ToranWeekly';
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +15,7 @@ export class ToranWeeklyService {
     return this.http.get(`${this.baseUrl}/GetToranForDate/${dateStr}`);
   }
 
-  getToranSchedule(fromDate: Date, toDate: Date, name?: string): Observable<ToranScheduleItem[]> {
+  getToranSchedule(fromDate: Date, toDate: Date, name?: string): Observable<ToranStatus[]> {
     const params: any = {
       fromDate: fromDate.toISOString().split('T')[0],
       toDate: toDate.toISOString().split('T')[0]
@@ -25,13 +25,13 @@ export class ToranWeeklyService {
       params.name = name;
     }
 
-    return this.http.get<ToranScheduleItem[]>(`${this.baseUrl}/GetToranSchedule`, { params });
+    return this.http.get<ToranStatus[]>(`${this.baseUrl}/GetToranSchedule`, { params });
   }
 }
 
 // services/date.service.ts
 import { Injectable } from '@angular/core';
-import { ToranScheduleItem } from '../models/Toran';
+import { ToranStatus } from '../models/Toran';
 
 @Injectable({
   providedIn: 'root'

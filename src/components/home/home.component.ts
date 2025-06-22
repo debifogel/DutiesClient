@@ -6,6 +6,7 @@ import { ToranWeeklyService, DateService } from '../../Services/toran-weekly.ser
 import { ToranService } from '../../Services/toran.service';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { ToranStatusService } from '../../Services/toran-status.service';
 
 @Component({
   selector: 'app-home',
@@ -26,11 +27,11 @@ export class HomeComponent implements OnInit {
   filteredEmployees: any[] = [];
   selectedEmployee: any = null;
   selectionMessage: string = '';
-
   constructor(
     private toranWeeklyService: ToranWeeklyService,
     private dateService: DateService,
-    private toranService: ToranService
+    private toranService: ToranService,
+    private confirm:ToranStatusService
   ) {}
 
   ngOnInit() {
@@ -54,27 +55,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  updateToranStatus() {
-    if (!this.nextFridayToran) return;
-
-    // כאן תוכל להוסיף לוגיקה לעדכון סטטוס התורנות בשרת
-    console.log('Updating toran status:', {
-      date: this.nextFridayDate,
-      toran: this.nextFridayToran,
-      completed: this.isCompleted
-    });
-
-    // לדוגמה - יצירת אובייקט ToranStatus חדש
-    const statusUpdate = {
-      id: 0, // יקבל ID מהשרת
-      toranId: 0, // צריך למצוא את ה-ID של התורן
-      date: this.nextFridayDate,
-      isCompleted: this.isCompleted,
-      completedAt: this.isCompleted ? new Date() : undefined
-    };
-
-    // this.toranStatusService.create(statusUpdate).subscribe({...});
-  }
 
   openEmployeeModal() {
     this.isModalOpen = true;
@@ -102,10 +82,21 @@ export class HomeComponent implements OnInit {
 
   confirmSelection() {
     if (this.selectedEmployee) {
-      this.selectionMessage = `✅ העובד ${this.selectedEmployee.name} נבחר לתורנות`;
+    let toran = {
+      date: this.nextFridayDate.toISOString(),
+      toran: this.selectedEmployee.name.toString(),
+    };
+      this.confirm.create(toran).subscribe({
+        next: () => {
+      this.selectionMessage = `התורנות אושרה בהצלחה`;
       this.isModalOpen = false;
-    } else {
+    } });}
+    else {
       this.selectionMessage = '❌ יש לבחור עובד לפני אישור';
     }
   }
+
+ closeModal() {
+  this.isModalOpen = false;
+ }
 }

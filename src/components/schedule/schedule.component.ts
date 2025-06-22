@@ -2,8 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ToranScheduleItem } from '../../models/Toran';
 import { ToranWeeklyService, DateService } from '../../Services/toran-weekly.service';
+import { ToranStatus } from '../../models/Toran';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { ToranWeeklyService, DateService } from '../../Services/toran-weekly.ser
  styleUrls: ['./schedule.component.css'],
 })
 export class ScheduleComponent implements OnInit {
-  scheduleItems: ToranScheduleItem[] = [];
+  scheduleItems:ToranStatus [] = [];
   uniqueToranNames: string[] = [];
   
   currentFromDate: Date = new Date();

@@ -3,24 +3,17 @@ export interface ToranModel {
   id: number;
   name: string;
   email?: string;
+  phone?: string;
   createdDate?: Date;
 }
 
 // models/toran-status.model.ts
-export interface ToranStatus {
-  id: number;
-  toranId: number;
-  date: Date;
-  isCompleted: boolean;
-  notes?: string;
-  completedAt?: Date;
-}
+
 
 // models/toran-schedule.model.ts
-export interface ToranScheduleItem {
+export interface ToranStatus {
   date: string;
   toran: string;
-  isCompleted?: boolean;
 }
 
 // models/api-response.model.ts

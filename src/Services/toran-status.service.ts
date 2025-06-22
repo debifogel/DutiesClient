@@ -10,7 +10,7 @@ import { ToranStatus } from '../models/Toran';
   providedIn: 'root'
 })
 export class ToranStatusService {
-  private readonly baseUrl = 'https://your-api-url/api/ToranStatus';
+  private readonly baseUrl = 'https://toran-management.onrender.com/api/ToranStatus';
 
   constructor(private http: HttpClient) {}
 

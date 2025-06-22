@@ -8,7 +8,7 @@ import { ToranModel } from '../models/Toran';
   providedIn: 'root'
 })
 export class ToranService {
-  private readonly baseUrl = 'https://your-api-url/api/Toran';
+  private readonly baseUrl = 'https://toran-management.onrender.com/api/Toran';
 
   constructor(private http: HttpClient) {}
 

@@ -1,6 +1,6 @@
 <div class="home-container">
     <div class="hero-section">
-      <h1>מערכת ניהול תורנויות</h1>
+      <h1>מערכת ניהול תורנים</h1>
       
       @if (isLoading) {
         <div class="loading">טוען נתונים...</div>
@@ -12,18 +12,20 @@
           </div>
 
           <div class="toran-selection">
-            <button (click)="openEmployeeModal()" class="action-btn primary">
-              אשר ביצוע התורנות
+            <button (click)="openEmployeeModal()" class="action-btn primary" >
+              אישור ביצוע התורנות
             </button>
           </div>
 
           @if(isModalOpen){<div  class="employee-modal">
             <div class="modal-content" >
-              <h3> בחר עובד</h3>
-              <input 
+              <h4> בחר תורן</h4>
+                <input 
                 type="text" 
                 [(ngModel)]="searchQuery" 
                 (input)="filterEmployees()" 
+                class="styled-input" 
+                style="width: 50%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;"
               />
               <ul class="employee-list">
               @for ( employee of filteredEmployees;track employee) {              
@@ -35,8 +37,11 @@
                   {{ employee.name }}
                 </li>}
               </ul>
-              <button (click)="confirmSelection()" class="action-btn success">
+              <button (click)="confirmSelection()" class="action-btn success" style="margin: 2px;">
                 אישור
+              </button>
+              <button (click)="closeModal()" class="action-btn success" style="margin: 2px;">
+                ביטול
               </button>
             </div>
           </div>

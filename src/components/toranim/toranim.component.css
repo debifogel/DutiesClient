@@ -1,321 +1,302 @@
-    .toranim-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      direction: rtl;
-    }
+.toranim-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  direction: rtl;
+}
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
 
-    h1 {
-      color: #333;
-      font-size: 2rem;
-      margin: 0;
-    }
+h1 {
+  color: #333;
+  font-size: 2rem;
+  margin: 0;
+}
 
-    .add-btn {
-      background: #4CAF50;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+.add-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
 
-    .add-btn:hover {
-      background: #45a049;
-    }
+.add-btn:hover {
+  background: #45a049;
+}
 
-    .loading {
-      text-align: center;
-      padding: 40px;
-      font-size: 1.2rem;
-      color: #666;
-    }
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #666;
+}
 
-    .error-message {
-      background: #ffebee;
-      color: #c62828;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      border-right: 4px solid #c62828;
-    }
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-right: 4px solid #c62828;
+}
 
-    .no-data {
-      text-align: center;
-      padding: 60px;
-      color: #666;
-      font-size: 1.2rem;
-      background: #f9f9f9;
-      border-radius: 12px;
-    }
+.no-data {
+  text-align: center;
+  padding: 60px;
+  color: #666;
+  font-size: 1.2rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
 
-    /* טופס */
-    .form-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
+/* טופס */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-    .form-container {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
+.form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
 
-    .form-container h2 {
-      margin-top: 0;
-      color: #333;
-      text-align: center;
-    }
+.form-container h2 {
+  margin-top: 0;
+  color: #333;
+  text-align: center;
+}
 
-    .form-group {
-      margin-bottom: 20px;
-    }
+.form-group {
+  margin-bottom: 20px;
+}
 
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: #555;
-    }
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
 
-    .form-group input[type="text"],
-    .form-group input[type="email"] {
-      width: 100%;
-      padding: 12px;
-      border: 2px solid #ddd;
-      border-radius: 6px;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
-    }
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
 
-    .form-group input:focus {
-      outline: none;
-      border-color: #667eea;
-    }
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
 
-    .form-group input[type="checkbox"] {
-      margin-left: 8px;
-    }
+.field-error {
+  color: #c62828;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
 
-    .field-error {
-      color: #c62828;
-      font-size: 0.9rem;
-      margin-top: 5px;
-    }
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 30px;
+}
 
-    .form-actions {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 30px;
-    }
+.save-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    .save-btn {
-      background: #667eea;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.save-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
 
-    .save-btn:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-    }
+.cancel-btn {
+  background: #f5f5f5;
+  color: #333;
+  border: 2px solid #ddd;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    .cancel-btn {
-      background: #f5f5f5;
-      color: #333;
-      border: 2px solid #ddd;
-      padding: 12px 24px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+/* חיפוש */
+.list-header {
+  margin-bottom: 20px;
+}
 
-    /* חיפוש */
-    .list-header {
-      margin-bottom: 20px;
-    }
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
 
-    .search-input {
-      width: 100%;
-      max-width: 400px;
-      padding: 12px;
-      border: 2px solid #ddd;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
+/* רשת התורנים */
+.toranim-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
 
-    /* רשת התורנים */
-    .toranim-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 20px;
-    }
+.toran-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .toran-card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+.toran-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
 
-    .toran-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
+.toran-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
 
-    .toran-card.inactive {
-      opacity: 0.6;
-      background: #f5f5f5;
-    }
+.toran-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.3rem;
+}
 
-    .toran-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 15px;
-    }
+.toran-email,
+.toran-phone,
+.toran-date {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
 
-    .toran-header h3 {
-      margin: 0;
-      color: #333;
-      font-size: 1.3rem;
-    }
+.label {
+  font-weight: bold;
+  margin-left: 5px;
+}
 
-    .status-badge {
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      background: #ffcdd2;
-      color: #c62828;
-    }
+.toran-email a,
+.toran-phone a {
+  color: #667eea;
+  text-decoration: none;
+}
 
-    .status-badge.active {
-      background: #c8e6c9;
-      color: #2e7d32;
-    }
+.toran-email a:hover,
+.toran-phone a:hover {
+  text-decoration: underline;
+}
 
-    .toran-email,
-    .toran-date {
-      margin-bottom: 10px;
-      font-size: 0.9rem;
-      color: #666;
-    }
+.toran-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
 
-    .label {
-      font-weight: bold;
-      margin-left: 5px;
-    }
+.edit-btn {
+  background: #2196F3;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  flex: 1;
+}
 
-    .toran-email a {
-      color: #667eea;
-      text-decoration: none;
-    }
+.delete-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  flex: 1;
+}
 
-    .toran-email a:hover {
-      text-decoration: underline;
-    }
+.delete-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
 
-    .toran-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-    }
+/* דיאלוג אישור */
+.confirm-dialog {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+}
 
-    .edit-btn {
-      background: #2196F3;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      flex: 1;
-    }
+.confirm-dialog h3 {
+  color: #c62828;
+  margin-top: 0;
+}
 
-    .delete-btn {
-      background: #f44336;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      flex: 1;
-    }
+.confirm-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 25px;
+}
 
-    .delete-btn:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-    }
-
-    /* דיאלוג אישור */
-    .confirm-dialog {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      max-width: 400px;
-    }
-
-    .confirm-dialog h3 {
-      color: #c62828;
-      margin-top: 0;
-    }
-
-    .confirm-actions {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      margin-top: 25px;
-    }
-
-    @media (max-width: 768px) {
-      .toranim-container {
-        padding: 10px;
-      }
-      
-      .header {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      
-      .toranim-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .form-container {
-        width: 95%;
-        padding: 20px;
-      }
-    }
+@media (max-width: 768px) {
+  .toranim-container {
+    padding: 10px;
+  }
   
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .toranim-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-container {
+    width: 95%;
+    padding: 20px;
+  }
+}
