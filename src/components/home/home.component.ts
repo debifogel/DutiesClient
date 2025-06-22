@@ -17,7 +17,7 @@ import { ToranStatusService } from '../../Services/toran-status.service';
 })
 export class HomeComponent implements OnInit {
   nextFridayDate: Date = new Date();
-  nextFridayToran: string | null = null;
+  nextFridayToran!: { name: string; email?: string; phone?: string; } | null;
   isCompleted: boolean = false;
   isLoading: boolean = true;
   errorMessage: string = '';

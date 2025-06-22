@@ -4,20 +4,31 @@
       
       @if (isLoading) {
         <div class="loading">טוען נתונים...</div>
-      } @else {
+      } 
+      @else {
         <div class="next-friday-card">
           <h2>תורנות יום שישי הקרוב</h2>
           <div class="date-display">
             {{ nextFridayDate | date:'dd/MM/yyyy' }}
           </div>
-
+          @if (nextFridayToran) {
+            <div class="toran-info">
+              <h3>{{ nextFridayToran.name }}</h3>
+              @if (nextFridayToran.email) {
+                <p>Email: <a href="mailto:{{ nextFridayToran.email }}">{{ nextFridayToran.email }}</a></p>
+              }
+              @if (nextFridayToran.phone) {
+                <p>Phone: <a href="tel:{{ nextFridayToran.phone }}">{{ nextFridayToran.phone }}</a></p>
+              }
+            </div>
           <div class="toran-selection">
             <button (click)="openEmployeeModal()" class="action-btn primary" >
               אישור ביצוע התורנות
             </button>
           </div>
 
-          @if(isModalOpen){<div  class="employee-modal">
+          @if(isModalOpen){
+          <div class="employee-modal">
             <div class="modal-content" >
               <h4> בחר תורן</h4>
                 <input 
@@ -46,12 +57,15 @@
             </div>
           </div>
         
-
-         @if(selectionMessage){} <div  class="success-message">
+         @if(selectionMessage){
+          <div class="success-message">
             {{ selectionMessage }}
           </div>
-        }
-        </div>
+      }
+      }
+          @else {
+            <p>אין תורן מוגדר ליום שישי הקרוב.</p>
+          }
       }
 
       @if (errorMessage) {
@@ -72,6 +86,5 @@
         </a>
       </div>
     </div>
-
-  </div>
+  }
   <router-outlet></router-outlet>
