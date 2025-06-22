@@ -15,10 +15,10 @@
             <div class="toran-info">
               <h3>{{ nextFridayToran.name }}</h3>
               @if (nextFridayToran.email) {
-                <p>Email: <a href="mailto:{{ nextFridayToran.email }}">{{ nextFridayToran.email }}</a></p>
+                <p>Email: <a href="mailto:{{ nextFridayToran.email }}" style="text-decoration: none;">{{ nextFridayToran.email }}</a></p>
               }
               @if (nextFridayToran.phone) {
-                <p>Phone: <a href="tel:{{ nextFridayToran.phone }}">{{ nextFridayToran.phone }}</a></p>
+                <p>Phone: <a href="tel:{{ nextFridayToran.phone }}" style="text-decoration: none;">{{ nextFridayToran.phone }}</a></p>
               }
             </div>
           <div class="toran-selection">
@@ -30,24 +30,14 @@
           @if(isModalOpen){
           <div class="employee-modal">
             <div class="modal-content" >
+              <div>
               <h4> בחר תורן</h4>
-                <input 
-                type="text" 
-                [(ngModel)]="searchQuery" 
-                (input)="filterEmployees()" 
-                class="styled-input" 
-                style="width: 50%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;"
-              />
-              <ul class="employee-list">
-              @for ( employee of filteredEmployees;track employee) {              
-                <li style="list-style: none; background-color: #ccc; width: 150px;" 
-                  
-                  (click)="selectEmployee(employee)"
-                  [class.selected]="employee === selectedEmployee"
-                >
-                  {{ employee.name }}
-                </li>}
-              </ul>
+              <select [(ngModel)]="selectedToranName" class="selection" >
+                @for (e of employees; track e.name) {
+                  <option [value]="e.name">{{ e.name }}</option>
+                }
+              </select>
+              </div>
               <button (click)="confirmSelection()" class="action-btn success" style="margin: 2px;">
                 אישור
               </button>

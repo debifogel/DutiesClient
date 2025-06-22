@@ -16,14 +16,15 @@ import { ToranStatus } from '../../models/Toran';
 export class ScheduleComponent implements OnInit {
   scheduleItems:ToranStatus [] = [];
   uniqueToranNames: string[] = [];
-  
+  searchTerm: string = '';
   currentFromDate: Date = new Date();
   currentToDate: Date = new Date();
   selectedFromDate: string = '';
   selectedToDate: string = '';
   selectedToranName: string = '';
   specificDate: string = '';
-  
+  filteredToranNames: string[] = [];
+
   isLoading: boolean = true;
   errorMessage: string = '';
 

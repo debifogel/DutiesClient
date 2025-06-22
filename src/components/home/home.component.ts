@@ -22,9 +22,8 @@ export class HomeComponent implements OnInit {
   isLoading: boolean = true;
   errorMessage: string = '';
   isModalOpen: boolean = false;
-  searchQuery: string = '';
+  selectedToranName: string = '';
   employees: any[] = [];
-  filteredEmployees: any[] = [];
   selectedEmployee: any = null;
   selectionMessage: string = '';
   constructor(
@@ -33,6 +32,7 @@ export class HomeComponent implements OnInit {
     private toranService: ToranService,
     private confirm:ToranStatusService
   ) {}
+  
 
   ngOnInit() {
     this.loadNextFridayToran();
@@ -61,7 +61,6 @@ export class HomeComponent implements OnInit {
     this.toranService.getAll().subscribe({
       next: (result) => {
         this.employees = result;
-        this.filteredEmployees = result;
       },
       error: (error) => {
         console.error('Error fetching employees:', error);
@@ -69,12 +68,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  filterEmployees() {
-    const query = this.searchQuery.toLowerCase();
-    this.filteredEmployees = this.employees.filter(employee =>
-      employee.name.toLowerCase().includes(query)
-    );
-  }
+  
 
   selectEmployee(employee: any) {
     this.selectedEmployee = employee;
