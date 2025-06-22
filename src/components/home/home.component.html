@@ -40,7 +40,7 @@
               />
               <ul class="employee-list">
               @for ( employee of filteredEmployees;track employee) {              
-                <li 
+                <li style="list-style: none; background-color: #ccc; width: 150px;" 
                   
                   (click)="selectEmployee(employee)"
                   [class.selected]="employee === selectedEmployee"

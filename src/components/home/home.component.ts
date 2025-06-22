@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     
     this.toranWeeklyService.getToranForDate(this.nextFridayDate).subscribe({
       next: (result) => {
-        this.nextFridayToran = result?.name || result?.toran || null;
+        this.nextFridayToran = result;
         this.isLoading = false;
       },
       error: (error) => {
