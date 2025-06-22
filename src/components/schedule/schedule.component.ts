@@ -37,7 +37,13 @@ export class ScheduleComponent implements OnInit {
     this.initializeDates();
     this.loadSchedule();
   }
-
+  resetFilters() {
+    this.selectedFromDate = '';
+    this.selectedToDate = '';
+    this.selectedToranName = '';
+    this.specificDate = '';
+    this.loadSchedule();
+  }
   private initializeDates() {
     const { fromDate, toDate } = this.dateService.getTwoMonthsFromNow();
     this.currentFromDate = fromDate;

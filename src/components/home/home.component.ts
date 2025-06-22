@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   employees: any[] = [];
   selectedEmployee: any = null;
   selectionMessage: string = '';
+  selectedDate: Date = new Date();
   constructor(
     private toranWeeklyService: ToranWeeklyService,
     private dateService: DateService,
@@ -77,7 +78,7 @@ export class HomeComponent implements OnInit {
   confirmSelection() {
     if (this.selectedEmployee) {
     let toran = {
-      date: this.nextFridayDate.toISOString(),
+      date: this.selectedDate.toISOString(),
       toran: this.selectedEmployee.name.toString(),
     };
       this.confirm.create(toran).subscribe({

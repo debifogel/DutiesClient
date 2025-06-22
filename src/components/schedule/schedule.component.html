@@ -4,51 +4,51 @@
       </div>
 
       <!-- בקרות חיפוש ונייווט -->
-      <div class="controls-section">
-        <div class="date-controls">                   
-          <div class="date-inputs">
-            <div class="input-group">
-              <label>מתאריך:</label>
-              <input
-                type="date"
-                [(ngModel)]="selectedFromDate"
-                (change)="onDateRangeChange()"
-              />
-            </div>
-            <div class="input-group">
-              <label>עד תאריך:</label>
-              <input
-                type="date"
-                [(ngModel)]="selectedToDate"
-                (change)="onDateRangeChange()"
-              />
-            </div>
-            <button class="apply-btn" (click)="loadSchedule()">החל</button>
-          </div>
-        </div>
+<div class="controls-section">
+  <div class="filters-row">
+    <div class="input-group">
+      <label>מתאריך:</label>
+      <input
+        type="date"
+        [(ngModel)]="selectedFromDate"
+        (change)="onDateRangeChange()"
+      />
+    </div>
 
-        <div class="filter-section">
-          <div class="input-group">
-            <label>סינון לפי תורן:</label>
-            <select [(ngModel)]="selectedToranName" (change)="onToranFilterChange()">
-              <option value="">כל התורנים</option>
-              @for (name of uniqueToranNames; track name) {
-                <option [value]="name">{{ name }}</option>
-              }
-            </select>
-          </div>
-          
-          <div class="input-group">
-            <label>חיפוש לפי תאריך ספציפי:</label>
-            <input
-              type="date"
-              [(ngModel)]="specificDate"
-              (change)="onSpecificDateSearch()"
-              placeholder="בחר תאריך"
-            />
-          </div>
-        </div>
-      </div>
+    <div class="input-group">
+      <label>עד תאריך:</label>
+      <input
+        type="date"
+        [(ngModel)]="selectedToDate"
+        (change)="onDateRangeChange()"
+      />
+    </div>
+
+    <div class="input-group">
+      <label>סינון לפי תורן:</label>
+      <select [(ngModel)]="selectedToranName" (change)="onToranFilterChange()">
+        <option value="">כל התורנים</option>
+        @for (name of uniqueToranNames; track name) {
+          <option [value]="name">{{ name }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label>תאריך ספציפי:</label>
+      <input
+        type="date"
+        [(ngModel)]="specificDate"
+        (change)="onSpecificDateSearch()"
+      />
+    </div>
+
+    <div class="buttons-group">
+      <button class="apply-btn" (click)="loadSchedule()">סנן</button>
+      <button class="reset-btn" (click)="resetFilters()">איפוס</button>
+    </div>
+  </div>
+</div>
 
       @if (isLoading) {
         <div class="loading">טוען לוח תורנויות...</div>

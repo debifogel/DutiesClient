@@ -10,52 +10,44 @@
           <h2>תורנות יום שישי הקרוב</h2>
           <div class="date-display">
             {{ nextFridayDate | date:'dd/MM/yyyy' }}
-          </div>
-          @if (nextFridayToran) {
-            <div class="toran-info">
-              <h3>{{ nextFridayToran.name }}</h3>
-              @if (nextFridayToran.email) {
-                <p>Email: <a href="mailto:{{ nextFridayToran.email }}" style="text-decoration: none;">{{ nextFridayToran.email }}</a></p>
-              }
-              @if (nextFridayToran.phone) {
-                <p>Phone: <a href="tel:{{ nextFridayToran.phone }}" style="text-decoration: none;">{{ nextFridayToran.phone }}</a></p>
-              }
             </div>
+          @if (nextFridayToran) {
+            <div class="date-display">     {{ nextFridayToran.name }}       </div>
+
           <div class="toran-selection">
             <button (click)="openEmployeeModal()" class="action-btn primary" >
-              אישור ביצוע התורנות
+              אישור ביצוע תורנות
             </button>
           </div>
 
           @if(isModalOpen){
-          <div class="employee-modal">
-            <div class="modal-content" >
-              <div>
-              <h4> בחר תורן</h4>
-              <select [(ngModel)]="selectedToranName" class="selection" >
-                @for (e of employees; track e.name) {
-                  <option [value]="e.name">{{ e.name }}</option>
-                }
-              </select>
+            <div class="employee-modal">
+              <div class="modal-content">
+                <div>
+                  <h4>
+                    בחר תורן
+                    <button class="close-btn" (click)="closeModal()" type="button">×</button>
+                  </h4>
+                  <select [(ngModel)]="selectedToranName" class="selection">
+                    @for (e of employees; track e.name) {
+                      <option [value]="e.name">{{ e.name }}</option>
+                    }
+                  </select>
+                  <input type="date" [(ngModel)]="selectedDate" class="date-picker" />
+                </div>
+                <button (click)="confirmSelection()" class="action-btn success" style="margin: 2px;">
+                  אישור
+                </button>
               </div>
-              <button (click)="confirmSelection()" class="action-btn success" style="margin: 2px;">
-                אישור
-              </button>
-              <button (click)="closeModal()" class="action-btn success" style="margin: 2px;">
-                ביטול
-              </button>
             </div>
-          </div>
-        
-         @if(selectionMessage){
-          <div class="success-message">
-            {{ selectionMessage }}
-          </div>
-      }
-      }
-          @else {
-            <p>אין תורן מוגדר ליום שישי הקרוב.</p>
+          
+            @if(selectionMessage){
+              <div class="success-message">
+                {{ selectionMessage }}
+              </div>
+            }
           }
+          
       }
 
       @if (errorMessage) {
