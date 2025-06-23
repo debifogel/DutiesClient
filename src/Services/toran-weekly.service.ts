@@ -61,7 +61,9 @@ export class DateService {
     return date;
   }
 
-  isPastDate(checkDate: Date): boolean {
+  isPastDate(d: Date): boolean {
+    const checkDate = new Date(d);
+    checkDate.setHours(0, 0, 0, 0); // Normalize to start of the day
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     return checkDate < today;
