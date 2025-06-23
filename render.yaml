@@ -4,4 +4,4 @@ routes:
 
 source: /.*
 
-destination: /toran-client/browser/index.html
+destination: /index.html
