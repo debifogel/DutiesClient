@@ -2,6 +2,6 @@ routes:
 
  type: rewrite
 
-source: /.*
+source: /*
 
 destination: /index.html

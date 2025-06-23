@@ -234,22 +234,23 @@ h1 {
 }
 
 .edit-btn {
-  background: rgba(4, 79, 141, 0.8); /* רקע כחול חזק יותר */
-  backdrop-filter: blur(10px); /* אפקט טשטוש רקע */
-  border: 1.5px solid rgba(4, 79, 141, 0.4); /* מסגרת כחולה שקופה */
-  color: white; /* טקסט לבן */
+  background-color: #667eea;
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(4, 79, 141, 0.4);
+  color: white;
   padding: 8px 16px;
-  border-radius: 12px; /* פינות מעוגלות יותר */
+  border-radius: 12px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
   flex: 1;
-  transition: all 0.3s ease; /* מעבר חלק */
-  box-shadow: 0 4px 15px rgba(4, 79, 141, 0.1); /* צל עדין */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(4, 79, 141, 0.1);
 }
 
+
 .edit-btn:hover {
-  background: rgba(4, 79, 141, 0.9); /* רקע חזק יותר בהובר */
+  background: #667eea(4, 79, 141, 0.9); 
   border-color: rgba(4, 79, 141, 0.6);
   color: rgba(255, 255, 255, 0.95); /* טקסט לבן מעט שקוף בהובר */
   transform: translateY(-2px); /* הרמה קלה */
@@ -262,7 +263,7 @@ h1 {
 }
 
 .delete-btn {
-  background: #bb261b 
+  background: #ce3251 
   ; /* רקע אדום חזק יותר */
   backdrop-filter: blur(10px); /* אפקט טשטוש רקע */
   border: 1.5px solid rgba(174, 15, 4, 0.4); /* מסגרת אדומה שקופה */
@@ -278,16 +279,15 @@ h1 {
 }
 
 .delete-btn:hover {
-  background: rgba(174, 15, 4, 0.9); /* רקע חזק יותר בהובר */
+  background: #ce3251(235, 23, 8, 0.9); /* רקע חזק יותר בהובר */
   border-color: rgba(174, 15, 4, 0.6);
   color: rgba(255, 255, 255, 0.95); /* טקסט לבן מעט שקוף בהובר */
   transform: translateY(-2px); /* הרמה קלה */
   box-shadow: 0 8px 25px rgba(174, 15, 4, 0.2); /* צל חזק יותר */
 }
-
 .delete-btn:active {
   transform: translateY(0); /* חזרה למקום בלחיצה */
-  background: #ae0f04; /* רקע אדום מלא */
+  background: #a81f2b; /* רקע אדום כהה יותר */
 }
 .delete-btn:disabled {
   background: #ccc;
