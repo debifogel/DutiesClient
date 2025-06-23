@@ -14,39 +14,9 @@
           @if (nextFridayToran) {
             <div class="date-display">     {{ nextFridayToran.name }}       </div>
 
-          <div class="toran-selection">
-            <button (click)="openEmployeeModal()" class="action-btn primary" >
-              אישור ביצוע תורנות
-            </button>
-          </div>
+         
 
-          @if(isModalOpen){
-            <div class="employee-modal">
-              <div class="modal-content">
-                <div>
-                  <h4>
-                    בחר תורן
-                    <button class="close-btn" (click)="closeModal()" type="button">×</button>
-                  </h4>
-                  <select [(ngModel)]="selectedToranName" class="selection">
-                    @for (e of employees; track e.name) {
-                      <option [value]="e.name">{{ e.name }}</option>
-                    }
-                  </select>
-                  <input type="date" [(ngModel)]="selectedDate" class="date-picker" />
-                </div>
-                <button (click)="confirmSelection()" class="action-btn success" style="margin: 2px;">
-                  אישור
-                </button>
-              </div>
-            </div>
-          
-            @if(selectionMessage){
-              <div class="success-message">
-                {{ selectionMessage }}
-              </div>
-            }
-          }
+         
           
       }
 
@@ -64,9 +34,40 @@
           ניהול תורנים
         </a>
         <a routerLink="/schedule" class="action-btn secondary">
-          צפייה בלוח התורנויות
-        </a>
+צפייה בתורניות        </a>
+        <div class="toran-selection">
+          <button (click)="openEmployeeModal()" class="action-btn primary" >
+            אישור ביצוע תורנות
+          </button>
+        </div>
       </div>
     </div>
+    @if(isModalOpen){
+      <div class="employee-modal">
+        <div class="modal-content">
+          <div>
+            <h4>
+              בחר תורן
+              <button class="close-btn" (click)="closeModal()" type="button">×</button>
+            </h4>
+            <select [(ngModel)]="selectedToranName" class="selection">
+              @for (e of employees; track e.name) {
+                <option [value]="e.name">{{ e.name }}</option>
+              }
+            </select>
+            <input type="date" [(ngModel)]="selectedDate" class="date-picker" />
+          </div>
+          <button (click)="confirmSelection()" class="action-btn success" style="margin: 2px;">
+            אישור
+          </button>
+        </div>
+      </div>
+    
+      @if(selectionMessage){
+        <div class="success-message">
+          {{ selectionMessage }}
+        </div>
+      }
+    }
   }
   <router-outlet></router-outlet>
