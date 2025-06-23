@@ -135,8 +135,11 @@ let date=new Date(d);
     return this.dateService.isPastDate(dateStr);
   }
 
-  isHighlighted(date: Date): boolean {
+  isHighlighted(d: Date): boolean {
+    const date = new Date(d);
+    date.setHours(0, 0, 0, 0); // Set time
     const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set time to midnight for comparison
     return date === today;
   }
 
