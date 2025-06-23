@@ -23,7 +23,7 @@ export class ToranStatusService {
   }
 
   create(status: ToranStatus): Observable<ToranStatus> {
-    return this.http.post<ToranStatus>(`${this.baseUrl}/Create`, status);
+    return this.http.post<ToranStatus>(`${this.baseUrl}/Create`, {id:0,LastDutyDate: status.date, EmployeeName: status.toran});
   }
 
   update(id: number, status: ToranStatus): Observable<void> {

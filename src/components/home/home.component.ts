@@ -76,18 +76,21 @@ export class HomeComponent implements OnInit {
   }
 
   confirmSelection() {
-    if (this.selectedEmployee) {
+    if (this.selectedToranName!== '') {
     let toran = {
-      date: this.selectedDate.toISOString(),
-      toran: this.selectedEmployee.name.toString(),
+      date: new Date(this.selectedDate),
+      toran: this.selectedToranName,
     };
+    
       this.confirm.create(toran).subscribe({
-        next: () => {
+        next: async () => {
       this.selectionMessage = `התורנות אושרה בהצלחה`;
+      await new Promise(resolve => setTimeout(resolve, 2000));
       this.isModalOpen = false;
     } });}
     else {
       this.selectionMessage = '❌ יש לבחור עובד לפני אישור';
+      console.log(this.selectedEmployee);
     }
   }
 

@@ -77,18 +77,18 @@
           </div>
 
           @for (item of scheduleItems; track item.date) {
-            <div class="schedule-row" [class.past-date]="isPastDate(item.date)" [class.highlighted]="isHighlighted(item.date)">
+            <div class="schedule-row" [class.past-date]="isPastDate(item.date.toISOString())" [class.highlighted]="isHighlighted(item.date.toISOString())">
               <div class="cell date-cell">
-                {{ formatDisplayDate(item.date) }}
+                {{ formatDisplayDate(item.date.toISOString()) }}
               </div>
               <div class="cell day-cell">
-                {{ getDayName(item.date) }}
+                {{ getDayName(item.date.toISOString()) }}
               </div>
               <div class="cell toran-cell">
                 <div class="toran-name">{{ item.toran }}</div>
               </div>
               <div class="cell status-cell">
-                @if (isPastDate(item.date)) {
+                @if (isPastDate(item.date.toISOString())){
                   <span class="status-badge completed">
                     ✅ בוצע
                   </span>

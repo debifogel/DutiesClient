@@ -10,7 +10,7 @@ import { ToranStatus } from '../../models/Toran';
   selector: 'app-schedule',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './schedule.component.html',
+  templateUrl:'./schedule.component.html',
  styleUrls: ['./schedule.component.css'],
 })
 export class ScheduleComponent implements OnInit {
@@ -143,10 +143,10 @@ export class ScheduleComponent implements OnInit {
   }
 
   getCompletedCount(): number {
-    return this.scheduleItems.filter(item => this.isPastDate(item.date)).length;
+    return this.scheduleItems.filter(item => this.isPastDate(item.date.toISOString())).length;
   }
 
   getPendingCount(): number {
-    return this.scheduleItems.filter(item => !this.isPastDate(item.date)).length;
+    return this.scheduleItems.filter(item => !this.isPastDate(item.date.toISOString())).length;
   }
 }

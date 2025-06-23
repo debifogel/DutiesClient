@@ -12,7 +12,7 @@ export interface ToranModel {
 
 // models/toran-schedule.model.ts
 export interface ToranStatus {
-  date: string;
+  date: Date;
   toran: string;
 }
 
