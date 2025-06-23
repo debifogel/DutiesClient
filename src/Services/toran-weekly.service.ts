@@ -57,12 +57,11 @@ export class DateService {
     return { fromDate, toDate };
   }
 
-  formatDate(date: Date): string {
-    return date.toLocaleDateString('he-IL');
+  formatDate(date: Date):Date {
+    return date;
   }
 
-  isPastDate(date: string): boolean {
-    const checkDate = new Date(date);
+  isPastDate(checkDate: Date): boolean {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     return checkDate < today;

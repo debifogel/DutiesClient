@@ -1,6 +1,6 @@
 // components/schedule/schedule.component.ts
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ToranWeeklyService, DateService } from '../../Services/toran-weekly.service';
 import { ToranStatus } from '../../models/Toran';
@@ -9,7 +9,7 @@ import { ToranStatus } from '../../models/Toran';
 @Component({
   selector: 'app-schedule',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,DatePipe],
   templateUrl:'./schedule.component.html',
  styleUrls: ['./schedule.component.css'],
 })
@@ -24,7 +24,6 @@ export class ScheduleComponent implements OnInit {
   selectedToranName: string = '';
   specificDate: string = '';
   filteredToranNames: string[] = [];
-
   isLoading: boolean = true;
   errorMessage: string = '';
 
@@ -36,13 +35,13 @@ export class ScheduleComponent implements OnInit {
   ngOnInit() {
     this.initializeDates();
     this.loadSchedule();
+    
   }
-  resetFilters() {
-    this.selectedFromDate = '';
-    this.selectedToDate = '';
+  resetFilters(): void {
+    this.initializeDates();
     this.selectedToranName = '';
     this.specificDate = '';
-    this.loadSchedule();
+    this.loadSchedule(); 
   }
   private initializeDates() {
     const { fromDate, toDate } = this.dateService.getTwoMonthsFromNow();
@@ -58,8 +57,7 @@ export class ScheduleComponent implements OnInit {
 
   loadSchedule() {
     this.isLoading = true;
-    this.errorMessage = '';
-    
+    this.errorMessage = '';   
     const fromDate = new Date(this.selectedFromDate);
     const toDate = new Date(this.selectedToDate);
     
@@ -71,6 +69,8 @@ export class ScheduleComponent implements OnInit {
           this.currentFromDate = fromDate;
           this.currentToDate = toDate;
           this.isLoading = false;
+          console.log('Schedule loaded:', this.scheduleItems);
+
         },
         error: (error) => {
           console.error('Error loading schedule:', error);
@@ -85,7 +85,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   onDateRangeChange() {
-    // עדכון אוטומטי כאשר משנים את התאריכים
+    this.loadSchedule()
   }
 
   onToranFilterChange() {
@@ -121,32 +121,30 @@ export class ScheduleComponent implements OnInit {
     return `${this.dateService.formatDate(fromDate)} - ${this.dateService.formatDate(toDate)}`;
   }
 
-  formatDisplayDate(dateStr: string): string {
-    const date = new Date(dateStr);
+  formatDisplayDate(date: Date): Date {
     return this.dateService.formatDate(date);
   }
 
-  getDayName(dateStr: string): string {
-    const date = new Date(dateStr);
+  getDayName(d: Date): string {
+let date=new Date(d);
     const days = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת'];
     return days[date.getDay()];
   }
 
-  isPastDate(dateStr: string): boolean {
+  isPastDate(dateStr: Date): boolean {
     return this.dateService.isPastDate(dateStr);
   }
 
-  isHighlighted(dateStr: string): boolean {
-    const date = new Date(dateStr);
+  isHighlighted(date: Date): boolean {
     const today = new Date();
-    return date.toDateString() === today.toDateString();
+    return date === today;
   }
 
   getCompletedCount(): number {
-    return this.scheduleItems.filter(item => this.isPastDate(item.date.toISOString())).length;
+    return this.scheduleItems.filter(item => this.isPastDate(item.date)).length;
   }
 
   getPendingCount(): number {
-    return this.scheduleItems.filter(item => !this.isPastDate(item.date.toISOString())).length;
+    return this.scheduleItems.filter(item => !this.isPastDate(item.date)).length;
   }
 }

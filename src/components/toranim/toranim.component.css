@@ -234,27 +234,61 @@ h1 {
 }
 
 .edit-btn {
-  background: #044f8d;
-  color: white;
-  border: none;
+  background: rgba(4, 79, 141, 0.8); /* רקע כחול חזק יותר */
+  backdrop-filter: blur(10px); /* אפקט טשטוש רקע */
+  border: 1.5px solid rgba(4, 79, 141, 0.4); /* מסגרת כחולה שקופה */
+  color: white; /* טקסט לבן */
   padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: 12px; /* פינות מעוגלות יותר */
   cursor: pointer;
   font-size: 0.9rem;
+  font-weight: 500;
   flex: 1;
+  transition: all 0.3s ease; /* מעבר חלק */
+  box-shadow: 0 4px 15px rgba(4, 79, 141, 0.1); /* צל עדין */
+}
+
+.edit-btn:hover {
+  background: rgba(4, 79, 141, 0.9); /* רקע חזק יותר בהובר */
+  border-color: rgba(4, 79, 141, 0.6);
+  color: rgba(255, 255, 255, 0.95); /* טקסט לבן מעט שקוף בהובר */
+  transform: translateY(-2px); /* הרמה קלה */
+  box-shadow: 0 8px 25px rgba(4, 79, 141, 0.2); /* צל חזק יותר */
+}
+
+.edit-btn:active {
+  transform: translateY(0); /* חזרה למקום בלחיצה */
+  background: #044f8d; /* רקע כחול מלא */
 }
 
 .delete-btn {
-  background: #b14841;
-  color: white;
-  border: none;
+  background: #bb261b 
+  ; /* רקע אדום חזק יותר */
+  backdrop-filter: blur(10px); /* אפקט טשטוש רקע */
+  border: 1.5px solid rgba(174, 15, 4, 0.4); /* מסגרת אדומה שקופה */
+  color: white; /* טקסט לבן */
   padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: 12px; /* פינות מעוגלות יותר */
   cursor: pointer;
   font-size: 0.9rem;
+  font-weight: 500;
   flex: 1;
+  transition: all 0.3s ease; /* מעבר חלק */
+  box-shadow: 0 4px 15px rgba(174, 15, 4, 0.1); /* צל עדין */
 }
 
+.delete-btn:hover {
+  background: rgba(174, 15, 4, 0.9); /* רקע חזק יותר בהובר */
+  border-color: rgba(174, 15, 4, 0.6);
+  color: rgba(255, 255, 255, 0.95); /* טקסט לבן מעט שקוף בהובר */
+  transform: translateY(-2px); /* הרמה קלה */
+  box-shadow: 0 8px 25px rgba(174, 15, 4, 0.2); /* צל חזק יותר */
+}
+
+.delete-btn:active {
+  transform: translateY(0); /* חזרה למקום בלחיצה */
+  background: #ae0f04; /* רקע אדום מלא */
+}
 .delete-btn:disabled {
   background: #ccc;
   cursor: not-allowed;

@@ -1,7 +1,5 @@
 <div class="home-container">
-    <div class="hero-section">
-      
-      
+    <div class="hero-section">      
       @if (isLoading) {
         <div class="loading">טוען נתונים...</div>
       } 
@@ -12,12 +10,7 @@
             {{ nextFridayDate | date:'dd/MM/yyyy' }}
             </div>
           @if (nextFridayToran) {
-            <div class="date-display">     {{ nextFridayToran.name }}       </div>
-
-         
-
-         
-          
+            <div class="date-display">     {{ nextFridayToran.name }}       </div>        
       }
 
       @if (errorMessage) {
@@ -35,11 +28,9 @@
         </a>
         <a routerLink="/schedule" class="action-btn secondary">
 צפייה בתורניות        </a>
-        <div class="toran-selection">
           <button (click)="openEmployeeModal()" class="action-btn primary" >
             אישור ביצוע תורנות
           </button>
-        </div>
       </div>
     </div>
     @if(isModalOpen){
